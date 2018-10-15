@@ -1,47 +1,46 @@
-import turtle #Grafikmodul importieren
+import turtle #Turtle ist ein Graphikmodul, welches gesteuerte Pfade, die mit der "Turtle" zurück gelegt werden visualisiert und dem Nutzer somit ermöglicht, sich frei auf der Zeichenfläche zu bewegen.
 import time #Zeitbezogene Funktionen importieren
 import random #importiert die zufallsfunktion
-turtle.colormode(255) #
+turtle.colormode(255) #Farbmodus in RGB 
 
-delay = 0.1 
+delay = 0.1 #zeitlicher Abstand zwischen den Aktualisierungen
 
-# Score auf 0 setzen
+# Score und Punkte auf 0 setzen
 punkte = 0
 rekord = 0
 
-# Benutzeroberfläche einstellen (Farbe, Titel, Größe...)
+#Grafikfenster einstellen (Farbe, Titel, Größe...)
 wn = turtle.Screen()
 wn.title("Snake")
 wn.bgcolor(154, 195, 97)
 wn.setup(width=800, height=600)
 wn.tracer(0) # keine screen updates
 
-#Schlangenkopf(erstes Segment) 
-head = turtle.Turtle()
-
-head.shape("turtle") #Das Kopfelement 
+#Schlangenkopf (Turtle/erstes Segment) 
+head = turtle.Turtle() #erstellt ein Objekt in Turtle, welches wir head nennen
+head.shape("turtle") #Setzt den Kopf als Schildkrötensymbol aus der Library fest
 head.color(45, 78, 0)
-head.penup() #
-head.goto(0,0)
-head.setheading(90)
-head.direction = "stop"
+head.penup() #verhindert die Aufzeichnung der Pfade (Stift wird nicht aufgesetzt)
+head.goto(0,0) #Startposition festlegen
+head.setheading(90) #Da unsere Turtle nicht rotationssymetrisch ist, wird sie zu beginn nach oben ausgerichtet
+head.direction = "stop" #Sie soll sich erst bewegen sobald der Spieler die erste Bewegungsrichtung vorgibt
 
-# Schlangen Futter
-food = turtle.Turtle()
+# Setzt Form, Farbe, erste Position... des Futters
+food = turtle.Turtle() 
 food.shape("turtle")
 food.color(104, 98, 29)
 food.tilt(90)
 food.penup()
-food.goto(0,100)
+food.goto(0,100) 
 
-segments = []
+segments = [] #Liste der Körperelemente
 
-# Schrift
+# Eigenschaften der Schrift
 pen = turtle.Turtle()
 pen.shape("square")
 pen.color(45, 78, 0)
 pen.penup()
-pen.hideturtle()
+pen.hideturtle() 
 pen.goto(0, -260)
 pen.write("Punkte: 0     Rekord: 0", align="center", font=("Courier", 24, "normal"))
 
